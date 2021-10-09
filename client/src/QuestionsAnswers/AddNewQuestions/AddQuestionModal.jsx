@@ -22,7 +22,7 @@ class AddAQuestionModal extends React.Component {
   newQuestionSubmit(e){
     e.preventDefault()
     if(this.state.question !== '' && this.state.username !== '' && this.state.email !== ''){
-      Axios.post('/api/fec2/hr-rfe/qa/questions',{
+      Axios.post('/qa/questions',{
         body: this.state.question,
         name: this.state.username,
         email: this.state.email,

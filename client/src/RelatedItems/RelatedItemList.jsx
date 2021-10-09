@@ -20,7 +20,7 @@ class RelatedItemList extends React.Component {
   componentDidMount() {
     for (var i = 0; i < this.props.relatedList.length; i++) {
       axios
-        .get("/api/fec2/hr-rfe/products/" + this.props.relatedList[i])
+        .get("/products/" + this.props.relatedList[i])
         .then((result) => {
           this.setState({
             [result.data.id]: result.data,
@@ -33,7 +33,7 @@ class RelatedItemList extends React.Component {
         .then((id) => {
           // get image of each related item
           axios
-            .get("/api/fec2/hr-rfe/products/" + id + "/styles")
+            .get("/products/" + id + "/styles")
             .then((result) => {
               var styles = result.data.results;
               var idx = 0;
@@ -55,7 +55,7 @@ class RelatedItemList extends React.Component {
             });
           // get the ratings of each related item
           axios
-            .get("/api/fec2/hr-rfe/reviews/meta?product_id=" + id)
+            .get("/reviews/meta?product_id=" + id)
             .then((result) => {
               if (Object.keys(result.data.ratings).length > 0) {
                 var totalCount = 0;

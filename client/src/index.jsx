@@ -29,7 +29,7 @@ class App extends React.Component {
 
   //Make A GET REQUEST and change state
   databaseFetcher() {
-    axios.get('/api/fec2/hr-rfe/products/' + this.state.currentItem_ID)
+    axios.get('/products/' + this.state.currentItem_ID)
     .then(data => {
       this.setState({
         details: data.data
@@ -45,7 +45,7 @@ class App extends React.Component {
   }
 
   updateDetails(newId) {
-    axios.get('/api/fec2/hr-rfe/products/' + newId)
+    axios.get('/products/' + newId)
     .then(data => {
       this.setState({
         currentItem_ID: newId,

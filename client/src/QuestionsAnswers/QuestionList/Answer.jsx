@@ -15,7 +15,7 @@ class Answer extends React.Component{
   helpfulUpdater(e){
     e.preventDefault()
     if(!this.state.userMarkedAnswerAsHelpful){
-      axios.put(`/api/fec2/hr-rfe/qa/answers/${this.props.answer.answer_id}/helpful`)
+      axios.put(`/qa/answers/${this.props.answer.answer_id}/helpful`)
       .then(response => {
         this.setState({userMarkedAnswerAsHelpful: true})
         this.props.updateAnswers()
@@ -31,7 +31,7 @@ class Answer extends React.Component{
 
   report(e){
     e.preventDefault()
-    axios.put(`/api/fec2/hr-rfe/qa/answers/${this.props.answer.answer_id}/report`)
+    axios.put(`/qa/answers/${this.props.answer.answer_id}/report`)
     .then(response => {
       e.target.innerText = 'Reported'
     })

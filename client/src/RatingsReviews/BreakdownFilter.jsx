@@ -17,7 +17,7 @@ class BreakdownFilter extends React.Component {
 
   // Get review metaData from API, store it in state, calculate the % of reviews that recommend the product
   getMetaData(product_id) {
-    axios.get(`${urlFragment}reviews/meta?product_id=${product_id}`)
+    axios.get(`/reviews/meta?product_id=${product_id}`)
     .then(metaData => {
       this.setState({
         metaData: metaData

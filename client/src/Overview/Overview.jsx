@@ -39,14 +39,14 @@ class Overview extends React.Component {
 
   apiFetcher() {
     let id = this.props.currentItem_ID;
-    axios.get(`${url}/products/${id}`)
+    axios.get(`/products/${id}`)
       .then(result => {
         this.setState({
           currentItem: result.data,
           price: result.data.default_price,
           sku: null
         });
-        axios.get(`${url}/products/${id}/styles`)
+        axios.get(`/products/${id}/styles`)
         .then(result => {
           this.setState({
             styles: result.data,
@@ -58,7 +58,7 @@ class Overview extends React.Component {
             }
           });
         })
-        axios.get(`${url}/reviews/meta/?product_id=${id}`)
+        axios.get(`/reviews/meta/?product_id=${id}`)
         .then(result => {
           this.setState({
             reviews: result.data
@@ -189,7 +189,7 @@ class Overview extends React.Component {
       })
     }
     for (let i = 0; i < this.state.quantity; i++) {
-      axios.post(`${url}/cart`, {sku_id: this.state.sku})
+      axios.post(`/cart`, {sku_id: this.state.sku})
         .then(() => {
           console.log('Added to Cart');
         })
@@ -197,7 +197,7 @@ class Overview extends React.Component {
           console.log(err);
         })
     }
-    axios.get(`${url}/cart`)
+    axios.get(`/cart`)
       .then(result => {
         this.setState({
           cart: result.data

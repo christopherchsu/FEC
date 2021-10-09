@@ -17,7 +17,7 @@ class Question extends React.Component {
   }
 
   answersFetcher(){
-    axios.get(`/api/fec2/hr-rfe/qa/questions/${this.props.question.question_id}/answers`)
+    axios.get(`/qa/questions/${this.props.question.question_id}/answers`)
     .then(response => {
       let result = []
       let seller = []
@@ -42,7 +42,7 @@ class Question extends React.Component {
   helpfulUpdater(e){
     e.preventDefault()
     if(!this.state.alreadyVoted){
-      axios.put(`/api/fec2/hr-rfe/qa/questions/${this.props.question.question_id}/helpful`)
+      axios.put(`/qa/questions/${this.props.question.question_id}/helpful`)
       .then(repsonse => {
         this.props.updateQuestions()
         this.setState({alreadyVoted: true})
@@ -56,7 +56,7 @@ class Question extends React.Component {
   reportQuesiton(e){
     e.preventDefault()
     if(!this.state.userAlreadyReported){
-      axios.put(`/api/fec2/hr-rfe/qa/questions/${this.props.question.question_id}/report`)
+      axios.put(`/qa/questions/${this.props.question.question_id}/report`)
       .then(response => {
         this.setState({userAlreadyReported: true})
         e.target.innerText = 'Reported'

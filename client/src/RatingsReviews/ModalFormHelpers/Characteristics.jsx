@@ -13,7 +13,7 @@ class Characteristics extends React.Component {
 
   // Get review metaData and store that in state
   getMetaData(product_id) {
-    axios.get(`${urlFragment}reviews/meta?product_id=${product_id}`)
+    axios.get(`/reviews/meta?product_id=${product_id}`)
     .then(metaData => {
       this.setState({
         metaData: metaData,

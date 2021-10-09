@@ -41,7 +41,7 @@ class IndividualTile extends React.Component {
   handleHelpfulClick() {
     if (!this.state.helpful) {
       this.state.helpful = true;
-      axios.put(`${urlFragment}reviews/${this.props.review.review_id}/helpful`)
+      axios.put(`/reviews/${this.props.review.review_id}/helpful`)
         .then((reply) => {
           this.props.rerender();
         })
@@ -51,7 +51,7 @@ class IndividualTile extends React.Component {
 
   // When a user clicks the "Report" button, that info is sent to the API and the review will not appear next time the page is loaded
   handleReport() {
-    axios.put(`${urlFragment}reviews/${this.props.review.review_id}/report`)
+    axios.put(`/reviews/${this.props.review.review_id}/report`)
       .then(data => {
         console.log('successfully reported', data);
       })

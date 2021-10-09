@@ -26,7 +26,7 @@ class OutfitList extends React.Component {
   // method to fetch details of an item
   fetchData(id) {
     axios
-      .get("/api/fec2/hr-rfe/products/" + id)
+      .get("/products/" + id)
       .then((result) => {
         this.setState({
           [result.data.id]: result.data,
@@ -39,7 +39,7 @@ class OutfitList extends React.Component {
       .then((id) => {
         // get image of each outfit item
         axios
-          .get("/api/fec2/hr-rfe/products/" + id + "/styles")
+          .get("/products/" + id + "/styles")
           .then((result) => {
             var styles = result.data.results;
             // console.log("styles", styles);
@@ -62,7 +62,7 @@ class OutfitList extends React.Component {
           });
         // get the ratings of each outfit item
         axios
-          .get("/api/fec2/hr-rfe/reviews/meta?product_id=" + id)
+          .get("/reviews/meta?product_id=" + id)
           .then((result) => {
             if (Object.keys(result.data.ratings).length > 0) {
               var totalCount = 0;

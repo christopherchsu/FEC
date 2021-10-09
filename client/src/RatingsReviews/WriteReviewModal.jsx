@@ -83,7 +83,7 @@ class WriteReviewModal extends React.Component {
 
       // otherwise, make the POST request
       } else {
-        axios.post(`${urlFragment}reviews`, data)
+        axios.post(`/reviews`, data)
           .then(data => {
             this.props.toggleModal();
             this.props.getAllReviews(this.props.product_id);

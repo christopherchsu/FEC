@@ -20,7 +20,7 @@ class AnswerAQuestionModal extends React.Component{
   newAnswerSubmit(e){
     e.preventDefault()
     if(this.state.answer !== '' && this.state.username !== '' && this.state.email !== ''){
-      axios.post(`/api/fec2/hr-rfe/qa/questions/${this.props.questionID}/answers`, {
+      axios.post(`/qa/questions/${this.props.questionID}/answers`, {
         body: this.state.answer,
         name: this.state.username,
         email: this.state.email,

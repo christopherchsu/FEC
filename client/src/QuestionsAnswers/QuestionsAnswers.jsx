@@ -20,7 +20,7 @@ class QuestionsAnswers extends React.Component {
   }
 
   questionsFetcher(){
-    axios.get(`/api/fec2/hr-rfe/qa/questions/?product_id=${this.props.product.id}&count=20`)
+    axios.get(`/qa/questions/?product_id=${this.props.product.id}&count=20`)
       .then(data => {
         let questions = data.data.results;
         if (questions.length <= 2) {

@@ -33,7 +33,7 @@ class ReviewList extends React.Component {
 
   // Get all reviews from the API and store them in an array in state. Also store the first two reviews in the displayedReviews array.
   getAllReviews(product_id, callback, page = 1, count = 20) {
-    axios.get(`${urlFragment}reviews/?product_id=${product_id}&sort=${this.state.sortOption}&page=${page}&count=${count}`)
+    axios.get(`/reviews/?product_id=${product_id}&sort=${this.state.sortOption}&page=${page}&count=${count}`)
       .then(allReviews => {
         var filteredReviews = [];
         for (var i = 0; i < allReviews.data.results.length; i++) {
@@ -63,7 +63,7 @@ class ReviewList extends React.Component {
 
   // Get the product's name (it will appear at top of the "Add a Review" modal form)
   getProductName(product_id) {
-    axios.get(`${urlFragment}products/${product_id}`)
+    axios.get(`/products/${product_id}`)
       .then(productInfo => {
         this.setState({
           productName: productInfo.data.name

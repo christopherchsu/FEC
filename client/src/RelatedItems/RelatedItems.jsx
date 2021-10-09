@@ -36,7 +36,7 @@ class RelatedItems extends React.Component {
     this.setState({
       fetched: false
     })
-    axios.get('/api/fec2/hr-rfe/products/' +  + id + '/related')
+    axios.get('/products/' +  + id + '/related')
     .then(result => {
       this.setState({
         relatedItems: _.uniq(result.data),
