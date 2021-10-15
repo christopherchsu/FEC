@@ -2,7 +2,9 @@ const path = require('path');
 const express = require('express');
 const port = process.env.PORT || 3000;
 const morgan = require('morgan');
-const {TOKEN, SERVER} = require('../config.js')
+// const {TOKEN, SERVER} = require('../config.js')
+const TOKEN = process.env.TOKEN;
+const SERVER = process.env.SERVER;
 // var proxy = require('express-http-proxy');
 const axios = require('axios');
 
