@@ -13,7 +13,7 @@
     "test": "jest",
     "react-dev": "webpack --mode development --watch",
     "start": "nodemon server/index.js",
-    "postinstall": "ng build"
+    "postinstall": "webpack --mode production"
   },
   "repository": {
     "type": "git",
