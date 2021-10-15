@@ -12,7 +12,8 @@
   "scripts": {
     "test": "jest",
     "react-dev": "webpack --mode development --watch",
-    "start": "nodemon server/index.js"
+    "start": "nodemon server/index.js",
+    "postinstall": "ng build"
   },
   "repository": {
     "type": "git",
