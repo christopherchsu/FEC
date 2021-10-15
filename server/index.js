@@ -5,6 +5,7 @@ const morgan = require('morgan');
 // const {TOKEN, SERVER} = require('../config.js')
 const TOKEN = process.env.TOKEN;
 const SERVER = process.env.SERVER;
+const IMGBB = process.env.IMGBB;
 // var proxy = require('express-http-proxy');
 const axios = require('axios');
 
@@ -25,6 +26,20 @@ var headers = {
     Authorization : TOKEN
   }
 }
+
+app.get('/imgbb', (req, res) => {
+  var file = req.body.file;
+  let body = new FormData();
+  body.set('key', IMGBB)
+  body.set('image', file)
+  axios.post('https://api.imgbb.com/1/upload', body)
+  .then(data => {
+    res.json(data);
+  })
+  .catch(err => {
+    res.status(403).send(err);
+  })
+})
 
 app.get('/products', (req, res) => {
   axios.get(`${SERVER}/products`, headers)

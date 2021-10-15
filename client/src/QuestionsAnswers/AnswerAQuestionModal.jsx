@@ -38,10 +38,8 @@ class AnswerAQuestionModal extends React.Component{
   }
 
   addImage(event){
-    let body = new FormData()
-    body.set('key', IMGBB)
-    body.set('image', event.target.files[0])
-    axios.post('https://api.imgbb.com/1/upload', body)
+    var body = {file: event.target.files[0]};
+    axios.post('/imgbb', body)
     .then(response => {
       console.log(response.data.data.image.url)
       if(this.state.photos.length === 4){
