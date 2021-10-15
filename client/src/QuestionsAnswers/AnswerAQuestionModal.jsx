@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import axios from 'axios'
 // import config from '/config.js'
-const IMGBB = process.env.IMGBB;
+// const IMGBB = process.env.IMGBB;
 
 class AnswerAQuestionModal extends React.Component{
   constructor(props){
