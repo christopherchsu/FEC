@@ -126,7 +126,7 @@ app.post('/qa/questions/:question_id/answers', (req, res) => {
 
 
 app.put('/qa/questions/:question_id/helpful', (req, res) => {
-  axios.put(`${SERVER}/qa/questions/${req.params.question_id}/helpful`, headers)
+  axios.put(`${SERVER}/qa/questions/${req.params.question_id}/helpful`, {}, headers)
   .then(data => {
     res.sendStatus(204);
   })
@@ -137,7 +137,7 @@ app.put('/qa/questions/:question_id/helpful', (req, res) => {
 
 
 app.put('/qa/questions/:question_id/report', (req, res) => {
-  axios.put(`${SERVER}/qa/questions/${req.params.question_id}/helpful`, headers)
+  axios.put(`${SERVER}/qa/questions/${req.params.question_id}/helpful`, {}, headers)
   .then(data => {
     res.sendStatus(204);
   })
@@ -147,7 +147,7 @@ app.put('/qa/questions/:question_id/report', (req, res) => {
 })
 
 app.put('/qa/answers/:answer_id/helpful', (req, res) => {
-  axios.put(`${SERVER}/qa/answers/${req.params.answer_id}/helpful`, headers)
+  axios.put(`${SERVER}/qa/answers/${req.params.answer_id}/helpful`, {}, headers)
   .then(data => {
     res.sendStatus(204);
   })
@@ -157,7 +157,7 @@ app.put('/qa/answers/:answer_id/helpful', (req, res) => {
 })
 
 app.put('/qa/answers/:answer_id/report', (req, res) => {
-  axios.put(`${SERVER}/qa/answers/${req.params.answer_id}/report`, headers)
+  axios.put(`${SERVER}/qa/answers/${req.params.answer_id}/report`, {}, headers)
   .then(data => {
     res.sendStatus(204);
   })
@@ -188,9 +188,8 @@ app.post('/cart', (req, res) => {
   })
 })
 
-
 app.get('/reviews', (req, res) => {
-  axios.get('http://3.140.190.48' + req.url)
+  axios.get(`${SERVER}${req.url}`, headers)
   .then((data) => {
     console.log(data.data);
     res.json(data.data);
@@ -201,9 +200,8 @@ app.get('/reviews', (req, res) => {
   })
 });
 
-
 app.get('/reviews/meta', (req, res) => {
-  axios.get('http://3.140.190.48' + req.url)
+  axios.get(`${SERVER}${req.url}`, headers)
   .then((data) => {
     console.log(data.data);
     res.json(data.data);
@@ -215,7 +213,7 @@ app.get('/reviews/meta', (req, res) => {
 });
 
 app.post('/reviews', (req, res) => {
-  axios.post('http://3.140.190.48' + req.url, req.body)
+  axios.post(`${SERVER}${req.url}`, req.body, headers)
   .then((data) => {
     res.sendStatus(200);
   })
@@ -226,7 +224,7 @@ app.post('/reviews', (req, res) => {
 });
 
 app.put('/reviews/:id/report', (req, res) => {
-  axios.put('http://3.140.190.48' + req.url)
+  axios.put(`${SERVER}${req.url}`, {}, headers)
   .then((data) => {
     res.sendStatus(200);
   })
@@ -237,7 +235,7 @@ app.put('/reviews/:id/report', (req, res) => {
 });
 
 app.put('/reviews/:id/helpful', (req, res) => {
-  axios.put('http://3.140.190.48' + req.url)
+  axios.put(`${SERVER}${req.url}`, {}, headers)
   .then((data) => {
     res.sendStatus(200);
   })
@@ -246,6 +244,65 @@ app.put('/reviews/:id/helpful', (req, res) => {
     res.sendStatus(400);
   })
 });
+
+
+// app.get('/reviews', (req, res) => {
+//   axios.get('http://3.140.190.48' + req.url)
+//   .then((data) => {
+//     console.log(data.data);
+//     res.json(data.data);
+//   })
+//   .catch(err => {
+//     console.log(err);
+//     res.sendStatus(400);
+//   })
+// });
+
+
+// app.get('/reviews/meta', (req, res) => {
+//   axios.get('http://3.140.190.48' + req.url)
+//   .then((data) => {
+//     console.log(data.data);
+//     res.json(data.data);
+//   })
+//   .catch(err => {
+//     console.log(err);
+//     res.sendStatus(400);
+//   })
+// });
+
+// app.post('/reviews', (req, res) => {
+//   axios.post('http://3.140.190.48' + req.url, req.body)
+//   .then((data) => {
+//     res.sendStatus(200);
+//   })
+//   .catch(err => {
+//     console.log(err);
+//     res.sendStatus(400);
+//   })
+// });
+
+// app.put('/reviews/:id/report', (req, res) => {
+//   axios.put('http://3.140.190.48' + req.url)
+//   .then((data) => {
+//     res.sendStatus(200);
+//   })
+//   .catch(err => {
+//     console.log(err);
+//     res.sendStatus(400);
+//   })
+// });
+
+// app.put('/reviews/:id/helpful', (req, res) => {
+//   axios.put('http://3.140.190.48' + req.url)
+//   .then((data) => {
+//     res.sendStatus(200);
+//   })
+//   .catch(err => {
+//     console.log(err);
+//     res.sendStatus(400);
+//   })
+// });
 
 
 app.listen(port, (err,something) => {
